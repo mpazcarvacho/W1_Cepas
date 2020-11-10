@@ -27,7 +27,10 @@
     <div class="form-group">
       <%= form.fields_for :assemblies do |assembly_form|%>
         <%= assembly_form.label assembly_form.object.strain_name, class: "control-label" %>
-        <%= assembly_form.text_field :percentage, class: "form-control" %>
+        <%# Añadir campo oculto para pasar id de strain %>
+        <%= assembly_form.hidden_field :strain_id %>
+        <%= assembly_form.number_field :percentage, class: "form-control" %>
+        <%# Falta añadir validación de suma de porcentaje = 100 %>
       <%end%>
     </div>
 
