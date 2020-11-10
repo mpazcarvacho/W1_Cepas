@@ -30,6 +30,28 @@
       <%= country_select("enologist", "nacionality", { priority_countries: ["CL"], selected: "CL" }, { class: 'form-control', data: { attribute: "value" } }) %>
     </div>
 
+
+
+
+    <table class="table">
+      <thead>
+        <th scope="col">Magazines</th>
+        <th scope="col" class="text-center">Position</th>
+      </thead>
+      <tbody>
+        <%= form.fields_for :positions do |position_form|%>
+        <tr>
+          <td><%= position_form.label position_form&.object&.magazine_name, class: "control-label" %><td>
+          <%# Añadir campo oculto para pasar id de enologist %>
+          <%= position_form.hidden_field :magazine_id %>
+          <td>aqui van los checkboxes de position</td>
+          
+          </tr>
+        <%end%>
+      </tbody>
+    </table>
+
+
     <div class="actions">
       <%= form.submit "Save", class:"btn btn-success" %>
     </div>

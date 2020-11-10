@@ -15,6 +15,11 @@ class EnologistsController < ApplicationController
   # GET /enologists/new
   def new
     @enologist = Enologist.new
+    @magazines = Magazine.all
+    @magazines.each do |magazine|
+      @enologist.positions.build(magazine_id: magazine.id)
+    end
+
   end
 
   # GET /enologists/1/edit
@@ -69,6 +74,6 @@ class EnologistsController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def enologist_params
-      params.require(:enologist).permit(:name, :age, :nacionality)
+      params.require(:enologist).permit(:name, :age, :nacionality, position_attributes: [:id, :magazine_id, :enologist_id, :position], scores_attributes: [:id, :enologist_id, :magazine_id, :score])
     end
 end

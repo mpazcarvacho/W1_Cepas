@@ -19,6 +19,10 @@ class WinesController < ApplicationController
     @strains.each do |strain|
       @wine.assemblies.build(strain_id: strain.id)
     end
+    @enologists = Enologist.all
+    @enologists.each do |enologist|
+      @wine.scores.build(enologist_id: enologist.id)
+    end
   end
 
   # GET /wines/1/edit
@@ -73,6 +77,8 @@ class WinesController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def wine_params
-      params.require(:wine).permit(:name, :price, assemblies_attributes: [:id, :strain_id, :wine_id, :percentage])
+      params.require(:wine).permit(:name, :price, assemblies_attributes: [:id, :strain_id, :wine_id, :percentage], scores_attributes: [:id, :enologist_id, :magazine_id, :score])
     end
+
+
 end
