@@ -25,7 +25,9 @@
 
     <div class="form-group">
       <%= form.label :nacionality, class:"control-label" %>
-      <%= form.text_field :nacionality, class:"form-control" %>
+      <%# <%= form.text_field :nacionality, class:"form-control" %>
+      <%# gem country select added %>
+      <%= country_select("enologist", "nacionality", { priority_countries: ["CL"], selected: "CL" }, { class: 'form-control', data: { attribute: "value" } }) %>
     </div>
 
     <div class="actions">
