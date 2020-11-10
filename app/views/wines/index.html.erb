@@ -8,6 +8,7 @@
       <th scope="col">Name</th>
       <th scope="col">Price</th>
       <th scope="col">Strains</th>
+      <th scope="col">Scores</th>
       <th colspan="3"></th>
     </tr>
   </thead>
@@ -18,6 +19,7 @@
         <td><%= wine.name %></td>
         <td><%= wine.price %></td>        
         <td><%= wine.strains_details %></td>
+        <td><%= "nota" %></td>
         <td><%= link_to 'Show', wine %></td>
         <td><%= link_to 'Edit', edit_wine_path(wine) %></td>
         <td><%= link_to 'Destroy', wine, method: :delete, data: { confirm: 'Are you sure?' } %></td>

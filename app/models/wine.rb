@@ -11,7 +11,7 @@ class Wine < ApplicationRecord
     details = assemblies.map do |assembly|
       "#{assembly.strain_name}: #{assembly.percentage}%"
     end
-    details.join(", ")
+    details.sort.join(", ")
   end
 
 end
