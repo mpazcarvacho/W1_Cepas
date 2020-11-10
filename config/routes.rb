@@ -1,4 +1,8 @@
 Rails.application.routes.draw do
+  resources :scores
+  resources :positions
+  resources :magazines
+  resources :enologists
   resources :assemblies
   resources :strains
   resources :wines

@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_11_10_012058) do
+ActiveRecord::Schema.define(version: 2020_11_10_030303) do
 
   create_table "assemblies", force: :cascade do |t|
     t.integer "strain_id"
@@ -20,6 +20,40 @@ ActiveRecord::Schema.define(version: 2020_11_10_012058) do
     t.datetime "updated_at", null: false
     t.index ["strain_id"], name: "index_assemblies_on_strain_id"
     t.index ["wine_id"], name: "index_assemblies_on_wine_id"
+  end
+
+  create_table "enologists", force: :cascade do |t|
+    t.string "name"
+    t.integer "age"
+    t.string "nacionality"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "magazines", force: :cascade do |t|
+    t.string "name"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "positions", force: :cascade do |t|
+    t.integer "enologist_id"
+    t.integer "magazine_id"
+    t.string "position"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["enologist_id"], name: "index_positions_on_enologist_id"
+    t.index ["magazine_id"], name: "index_positions_on_magazine_id"
+  end
+
+  create_table "scores", force: :cascade do |t|
+    t.integer "wine_id"
+    t.integer "enologist_id"
+    t.integer "score"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["enologist_id"], name: "index_scores_on_enologist_id"
+    t.index ["wine_id"], name: "index_scores_on_wine_id"
   end
 
   create_table "strains", force: :cascade do |t|
