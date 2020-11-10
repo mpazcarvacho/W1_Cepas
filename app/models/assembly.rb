@@ -6,4 +6,5 @@ class Assembly < ApplicationRecord
     strain&.name
   end
 
+
 end
