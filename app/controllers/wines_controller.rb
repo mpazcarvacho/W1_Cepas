@@ -15,6 +15,10 @@ class WinesController < ApplicationController
   # GET /wines/new
   def new
     @wine = Wine.new
+    @strains = Strain.all
+    @strains.each do |strain|
+      @wine.assemblies.build(strain_id: strain.id)
+    end
   end
 
   # GET /wines/1/edit
