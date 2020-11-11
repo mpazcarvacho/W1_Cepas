@@ -44,7 +44,14 @@
           <td><%= position_form.label position_form&.object&.magazine_name, class: "control-label" %><td>
           <%# Añadir campo oculto para pasar id de enologist %>
           <%= position_form.hidden_field :magazine_id %>
-          <td>aqui van los checkboxes de position</td>
+          <td>
+            <%=form.collection_check_boxes(:positions, Position.all, :id, :position) do |p|%>
+              <%=p.label class:"label-checkbox" do%>
+                  <%=p.check_box + p.text%>
+              <%end%>
+            <%end%>
+          
+          </td>
           
           </tr>
         <%end%>

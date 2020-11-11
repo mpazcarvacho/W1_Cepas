@@ -36,24 +36,27 @@
 
     <%# Agregar scores %>
 
-    <table class="table">
-      <thead>
-        <th scope="col">Enologist</th>
-        <th scope="col" class="text-center">Score</th>
-      </thead>
-      <tbody>
-        <%= form.fields_for :scores do |score_form|%>
-        <tr>
-          <td><%= score_form.label score_form&.object&.enologist_name, class: "control-label" %><td>
-          <%# Añadir campo oculto para pasar id de enologist %>
-          <%= score_form.hidden_field :enologist_id %>
-          <td><%= score_form.number_field :score, class: "form-control text-center" %></td>
-          
-          </tr>
-        <%end%>
-      </tbody>
-    </table>
-
+    <% if @enologists%>
+      <table class="table">
+        <thead>
+          <th>Enologist</th>
+          <th>Age</th>
+          <th>Score</th>
+        </thead>
+        <tbody>
+          <%= form.fields_for :scores do |score_form|%>
+          <tr>
+            <td><%= score_form.label score_form&.object&.enologist_name, class: "control-label" %><td>
+            <%# Añadir campo oculto para pasar id de enologist %>
+            <td><%= score_form.label score_form&.object&.enologist_age, class: "control-label" %><td>
+            <%= score_form.hidden_field :enologist_id %>
+            <td><%= score_form.number_field :score, class: "form-control text-center" %></td>
+            
+            </tr>
+          <%end%>
+        </tbody>
+      </table>
+    <%end%>
     <div class="actions">
       <%= form.submit "Save", class: 'btn btn-success' %>
     </div>

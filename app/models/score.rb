@@ -6,4 +6,8 @@ class Score < ApplicationRecord
     enologist&.name
   end
 
+  def enologist_age
+    enologist&.age.to_s
+  end
+
 end

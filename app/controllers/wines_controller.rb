@@ -1,5 +1,6 @@
 class WinesController < ApplicationController
   before_action :set_wine, only: [:show, :edit, :update, :destroy]
+  # before_action :enologists_check, only: [:edit]
 
   # GET /wines
   # GET /wines.json
@@ -19,14 +20,20 @@ class WinesController < ApplicationController
     @strains.each do |strain|
       @wine.assemblies.build(strain_id: strain.id)
     end
-    @enologists = Enologist.all
-    @enologists.each do |enologist|
-      @wine.scores.build(enologist_id: enologist.id)
-    end
+
+    # @enologists = Enologist.order(:age)
+    # @enologists.each do |enologist|
+    #   @wine.scores.build(enologist_id: enologist.id)
+    # end
+    
   end
 
   # GET /wines/1/edit
   def edit
+    @enologists = Enologist.order(:age)
+    @enologists.each do |enologist|
+      @wine.scores.build(enologist_id: enologist.id)
+    end
   end
 
   # POST /wines
