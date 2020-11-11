@@ -5,6 +5,7 @@ class Enologist < ApplicationRecord
   has_many :wines, through: :scores
 
   accepts_nested_attributes_for :positions, :scores
+  
 
   def position_name
     position&.name
